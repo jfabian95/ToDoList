@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <ul class="collection">
+        {% for todo in todolist %}      
+                <li class="collection-item">{{ todo.entry }}             
+                    <div class="float-right">     
+                        <form action="delete_todo/{{ todo.id }}" method="POST">{% csrf_token %}         
+                            <button class="btn-floating btn-small waves-effect waves-light red" type="submit" name="delete">
+                                <i class="material-icons">delete_forever</i>
+                            </button>  
+                        </form>
+                    </div>  
+                </li>        
+        {% endfor %}
+    </ul>
+{% endblock %}
